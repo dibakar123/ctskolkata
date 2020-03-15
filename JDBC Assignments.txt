@@ -1,0 +1,64 @@
+create a database empdb in mysql and connect with this db.
+Now create following tables:
+
+-- Create DEPT table which will be the parent table of the EMP table. 
+create table dept(  
+  deptno     number(2,0),  
+  dname      varchar2(14),  
+  loc        varchar2(13),  
+  constraint pk_dept primary key (deptno)  
+);
+
+-- Create the EMP table which has a foreign key reference to the DEPT table.  
+The foreign key will require that the DEPTNO in the EMP table exist in the DEPTNO column in the DEPT table.
+create table emp(  
+  empno    number(4,0),  
+  ename    varchar2(10),  
+  job      varchar2(9),  
+  sal      number(7,2),  
+  deptno   number(2,0),  
+  constraint pk_emp primary key (empno),  
+  constraint fk_deptno foreign key (deptno) references dept (deptno)  
+);
+
+-- Insert row into DEPT table using named columns.
+insert into DEPT (DEPTNO, DNAME, LOC)
+values(10, 'ACCOUNTING', 'NEW YORK');
+
+-- Insert a row into DEPT table by column position.
+insert into dept  
+values(20, 'RESEARCH', 'DALLAS');
+
+insert into dept  
+values(30, 'SALES', 'CHICAGO');
+
+insert into dept  
+values(40, 'OPERATIONS', 'BOSTON');
+
+Q1.
+
+Write a java program that connects to mysql database, insert data into table “emp” 
+
+Data like :  
+ 7566, 'JONES', 'MANAGER', 7839,20  
+
+
+Q2.
+
+Write a java program that connects to mysql database, queries the inbuilt table “emp” 
+and displays the first two columns (empno using column index and ename using column name ) of all the rows.
+
+Q3.
+
+Modify the above program to display all the rows where sal is greater than 1000 and less than 2000. Display the columns ename, job, sal.
+
+Q4.
+
+Modify the above program to display a particular employee's information after taking his/her empid.
+if empid found , show details otherwise 'No Data found'.
+
+Q5.
+
+Modify the above program to display a particular employee's information after taking his/her empid.
+if empid found , show details as the columns ename, job, sal, deptno , dept name
+ otherwise 'No Data found'.	
